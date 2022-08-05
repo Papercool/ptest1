@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./tbs_prj_style.css" />
+    <script src="./tbs_prj_script.js" defer></script>
+    <script src="./tbs_draggable_list.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="prj_frm_main">
+      <div id="prj_frm_base_left" class="prj_base_layout">
+        <div id="prj_frm_cont_name" class="prj_item_grp_one">
+          <label for="prj_txt_name">Full Name</label>
+          <input
+            type="text"
+            id="prj_txt_name"
+            placeholder=""
+            style="text-transform: uppercase"
+            maxlength="50"
+          />
+        </div>
+        <div id="prj_frm_cont_race" class="prj_item_grp_one">
+          <label for="prj_drp_race">Race</label>
+          <select name="prj_drp_race" id="race">
+            <option value="NA"></option>
+            <option value="chinese">Chinese</option>
+            <option value="malay">Malay</option>
+            <option value="indian">Indian</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div id="prj_frm_cont_gender" class="prj_item_grp_one">
+          <label>Gender</label>
+          <div id="prj_frm_cont_gender_items">
+            <input
+              type="radio"
+              id="male"
+              name="gender"
+              value="male"
+              class="radbtn"
+            />
+            <label for="male">Male</label><br />
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="female"
+              class="radbtn"
+            />
+            <label for="female">Female</label><br />
+          </div>
+        </div>
+        <div id="prj_frm_cont_weightheight" class="prj_item_grp_one">
+          <div>
+            <label>Weight</label>
+            <div class="range_item">
+              <div id="weight" class="range_output">60</div>
+              <label for="weight">kg</label>
+              <input
+                id="slide"
+                type="range"
+                min="20"
+                max="200"
+                step="1"
+                value="60"
+                class="slider"
+                onchange="updateWeight(this.value)"
+                onmousemove="updateWeight(this.value)"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label>Height</label>
+            <div class="range_item">
+              <div id="height" class="range_output">1.5</div>
+              <label for="height">m</label>
+              <input
+                id="slide"
+                type="range"
+                min="0.6"
+                max="2.2"
+                step="0.1"
+                value="1.6"
+                class="slider"
+                onchange="updateHeight(this.value)"
+                onmousemove="updateHeight(this.value)"
+              />
+            </div>
+          </div>
+        </div>
+        <div id="prj_frm_cont_dob" class="prj_item_grp_one">
+          <label for="prj_date_dob">Date of Birth</label>
+          <input
+            type="date"
+            id="prj_date_dob"
+            name="date_of_birth"
+            value=""
+            min="1920-01-01"
+            max="2020-12-31"
+          />
+        </div>
+        <div id="prj_frm_cont_medtest" class="prj_item_grp_one">
+          <label>Medical Test</label>
+          <div>
+            <input type="checkbox" id="blood" name="medtest1" value="blood" />
+            <label for="blood">Blood Screening</label><br />
+            <input type="checkbox" id="vision" name="medtest2" value="vision" />
+            <label for="vision">Vision Screening</label><br />
+            <input
+              type="checkbox"
+              id="hearing"
+              name="medtest3"
+              value="hearing"
+            />
+            <label for="hearing">Hearing</label><br />
+          </div>
+        </div>
+        <div id="prj_frm_cont_ph" class="prj_item_grp_one">
+          <label for="prj_num_ph">pH Scale</label>
+          <input
+            type="number"
+            id="prj_num_ph"
+            name="ph_scale"
+            min="1"
+            max="14"
+          />
+        </div>
+        <div id="prj_frm_cont_list" class="prj_item_grp_one">
+          <label>Select the following test items.</label>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 40px;
+              padding-top: 10px;
+            "
+          >
+            <div id="scroll_box_from" class="scroll_box">
+              <div id="item1" class="listitem" draggable="true">
+                Blood Pressure, Body Weight, Height and Body Mass Index (BMI)
+              </div>
+              <div id="item2" class="listitem" draggable="true">
+                Blood Investigations – Complete Blood Count, Liver function
+                tests, Lipid profile analysis, Blood sugar levels
+              </div>
+              <div id="item3" class="listitem" draggable="true">
+                Urine – Routine and Microscopic Examination
+              </div>
+              <div id="item4" class="listitem" draggable="true">
+                Radiology – Chest x-ray and Abdominal Ultrasound
+              </div>
+              <div id="item5" class="listitem" draggable="true">
+                Visual and Auditory Assessment
+              </div>
+              <div id="item6" class="listitem" draggable="true">
+                Oral and Dental Health Assessment
+              </div>
+              <div id="item7" class="listitem" draggable="true">
+                Cardiac Health Status Check – ECG and 2D Cchocardiography
+              </div>
+              <div id="item8" class="listitem" draggable="true">
+                Colonic Health – per-rectal and colonoscopy examination
+              </div>
+              <div id="item9" class="listitem" draggable="true">
+                Bone Health Assessment
+              </div>
+              <div id="item10" class="listitem" draggable="true">
+                Respiratory status analysis – chest x-ray and spirometry
+              </div>
+            </div>
+            <div id="scroll_box_to" class="scroll_box"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="prj_frm_base_centre" class="prj_base_layout">
+        <!-- Group 3. Chest -->
+        <div id="prj_frm_cont_chest" class="prj_item_grp_many">
+          <div
+            class="prj_item_grp_top"
+            onclick="tbs_hide_show_tag('prj_item_grp_body_chest')"
+          >
+            <label class="prj_item_grp_top_title">3. Chest</label>
+          </div>
+          <div id="prj_item_grp_body_chest" class="prj_item_grp_body">
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">a)</label>
+              </div>
+              <div>
+                <p style="display: inline-block">
+                  Are the shape, capacity and expansion of the chest
+                  unsatisfactory?
+                </p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input type="radio" id="prj_3a1" name="prj_3a" value="YES" />
+              <label for="prj_3a1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input type="radio" id="prj_3a2" name="prj_3a" value="NO" />
+              <label for="prj_3a2">NO</label><br /><br />
+            </div>
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">b)</label>
+              </div>
+              <div>
+                <p>
+                  Are the breath sounds abnormal? If Yes, please describe the
+                  adventitious sounds heard.
+                </p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input
+                type="radio"
+                id="prj_3b1"
+                name="prj_3b"
+                value="YES"
+                onchange="tbs_hide_show_textarea('prj_3b_remarks_grp','prj_3b1')"
+              />
+              <label for="prj_3b1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input
+                type="radio"
+                id="prj_3b2"
+                name="prj_3b"
+                value="NO"
+                onchange="tbs_hide_show_textarea('prj_3b_remarks_grp','prj_3b1')"
+              />
+              <label for="prj_3b2">NO</label><br /><br />
+            </div>
+
+            <div id="prj_3b_remarks_grp" class="prj_remarks_grp">
+              <label>Please give full details of any abnormality</label>
+              <textarea
+                id="prj_3b_remarks"
+                name="prj_3b_remarks"
+                class="prj_radio_textarea"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- Group 4. Heart -->
+        <div id="prj_frm_cont_heart" class="prj_item_grp_many">
+          <div
+            class="prj_item_grp_top"
+            onclick="tbs_hide_show_tag('prj_item_grp_body_heart')"
+          >
+            <label class="prj_item_grp_top_title">4. Heart</label>
+          </div>
+          <div id="prj_item_grp_body_heart" class="prj_item_grp_body">
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">a)</label>
+              </div>
+              <div>
+                <p>Is the apex beat abnormal?</p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input type="radio" id="prj_4a1" name="prj_4a" value="YES" />
+              <label for="prj_4a1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input type="radio" id="prj_4a2" name="prj_4a" value="NO" />
+              <label for="prj_4a2">NO</label><br /><br />
+            </div>
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">b)</label>
+              </div>
+              <div>
+                <p>Are there any signs of hypertrophy or dilatation?</p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input type="radio" id="prj_4b1" name="prj_4b" value="YES" />
+              <label for="prj_4b1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input type="radio" id="prj_4b2" name="prj_4b" value="NO" />
+              <label for="prj_4b2">NO</label><br /><br />
+            </div>
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">c)</label>
+              </div>
+              <div>
+                <p>Are there any abnormalities in the heart sounds?</p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input type="radio" id="prj_4c1" name="prj_4c" value="YES" />
+              <label for="prj_4c1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input type="radio" id="prj_4c2" name="prj_4c" value="NO" />
+              <label for="prj_4c2">NO</label><br /><br />
+            </div>
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">d)</label>
+              </div>
+              <div>
+                <p>
+                  Are there any murmurs? If Yes, please indicated the grade of
+                  murmurs.
+                </p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input
+                type="radio"
+                id="prj_4d1"
+                name="prj_4d"
+                value="YES"
+                onchange="tbs_hide_show_textarea('prj_4d_remarks_grp','prj_4d1')"
+              />
+              <label for="prj_4d1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input
+                type="radio"
+                id="prj_4d2"
+                name="prj_4d"
+                value="NO"
+                onchange="tbs_hide_show_textarea('prj_4d_remarks_grp','prj_4d1')"
+              />
+              <label for="prj_4d2">NO</label><br /><br />
+            </div>
+            <div id="prj_4d_remarks_grp" class="prj_remarks_grp">
+              <label>Please give full details of any abnormality</label>
+              <textarea
+                id="prj_4d_remarks"
+                name="prj_4d_remarks"
+                class="prj_radio_textarea"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="prj_frm_base_right" class="prj_base_layout">
+        <!-- Group 5. Abdomen -->
+        <div id="prj_frm_cont_abdomen" class="prj_item_grp_many">
+          <div
+            class="prj_item_grp_top"
+            onclick="tbs_hide_show_tag('prj_item_grp_body_abdomen')"
+          >
+            <label class="prj_item_grp_top_title">5. Abdomen</label>
+          </div>
+          <div id="prj_item_grp_body_abdomen" class="prj_item_grp_body">
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">a)</label>
+              </div>
+              <div>
+                <p>Are the liver, spleen, kidneys palpable?</p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input type="radio" id="prj_5a1" name="prj_5a" value="YES" />
+              <label for="prj_5a1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input type="radio" id="prj_5a2" name="prj_5a" value="NO" />
+              <label for="prj_5a2">NO</label><br /><br />
+            </div>
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">b)</label>
+              </div>
+              <div>
+                <p>
+                  Are there any abnormal abdominal mass, such as hernia, tumour?
+                </p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input type="radio" id="prj_5b1" name="prj_5b" value="YES" />
+              <label for="prj_5b1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input type="radio" id="prj_5b2" name="prj_5b" value="NO" />
+              <label for="prj_5b2">NO</label><br /><br />
+            </div>
+            <div style="display: flex">
+              <div>
+                <label class="prj_numbering">c)</label>
+              </div>
+              <div>
+                <p>Are there any symptoms of any digestive disturbances?</p>
+              </div>
+            </div>
+            <div class="prj_radio_grp">
+              <input
+                type="radio"
+                id="prj_5c1"
+                name="prj_5c"
+                value="YES"
+                onchange="tbs_hide_show_textarea('prj_5c_remarks_grp','prj_5c1')"
+              />
+              <label for="prj_5c1">YES&nbsp&nbsp&nbsp&nbsp</label>
+              <input
+                type="radio"
+                id="prj_5c2"
+                name="prj_5c"
+                value="NO"
+                onchange="tbs_hide_show_textarea('prj_5c_remarks_grp','prj_5c1')"
+              />
+              <label for="prj_5c2">NO</label><br /><br />
+            </div>
+            <div id="prj_5c_remarks_grp" class="prj_remarks_grp">
+              <label>Please give full details of any abnormality</label>
+              <textarea
+                id="prj_5c_remarks"
+                name="prj_5c_remarks"
+                class="prj_radio_textarea"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
